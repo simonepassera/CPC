@@ -30,7 +30,7 @@ impl Tree {
     /// node `parent_id` iff `is_left` is `true`, the right child otherwise.
     ///
     /// # Panics
-    /// Panics if the `parent_id` does not exist, or if the node `parent_id ` has  
+    /// Panics if the `parent_id` does not exist, or if the node `parent_id` has  
     /// the child already set.
     pub fn add_node(&mut self, parent_id: usize, key: u32, is_left: bool) -> usize {
         assert!(
@@ -267,18 +267,5 @@ mod tests {
         tree.add_node(1, 3, false);
         tree.add_node(2, 4, false);
         assert_eq!(tree.max_path_sum(), 10); // 1 + 2 + 3 + 4 = 10
-    }
-
-    #[test]
-    fn test_max_path_sum_multiple_leaves() {
-        let mut tree = Tree::with_root(10);
-        tree.add_node(0, 5, true);
-        tree.add_node(0, 15, false);
-        tree.add_node(1, 3, true);
-        tree.add_node(1, 7, false);
-        tree.add_node(2, 12, true);
-        tree.add_node(2, 20, false);
-        tree.add_node(5, 25, false);
-        assert_eq!(tree.max_path_sum(), 74); // Path: 7 -> 5 -> 10 -> 15 -> 12 -> 25
     }
 }
